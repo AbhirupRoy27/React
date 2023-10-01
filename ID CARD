@@ -1,0 +1,229 @@
+<html>
+<head>
+<title>ID Card generator</title>
+<style>
+   input {
+    border-radius: 5px 
+   }
+  .container {
+    display: flex;
+    align-items: center;
+    padding-left: 220px;
+    background:linear-gradient( #A1224C,#A1229B ) ;
+    border-radius: 6px;
+  }
+  
+  .heading {
+    padding: 10px 0px;
+    border-radius: 6px;
+    text-align: center;
+    background: linear-gradient(#1F3D9B, #1BC8EF );
+;
+  }
+  
+  .main-box {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    background-color: #f8f8f8;
+    border-radius: 6px;
+  }
+  .sub-box {
+    padding-left: 10px;
+    padding-right: 15px;
+    border-radius: 8px;
+  }
+  
+  .form-element {
+    margin: 9px;
+    min-width: 200px;
+    display: flex;
+  }
+  
+  .form-label {
+    min-width: 150px;
+    font-family: Georgia, serif;
+  }
+  
+  .id-card-container {
+    display: none;
+  }
+  
+  .card-container {
+    width: 620px;
+    height: 300px;
+    border-radius: 10px;
+    background: linear-gradient(#D6DBDF , #30BBB2);
+    font-family: Abel, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-wrapper {
+    width: 80vw;
+    height: 250px;
+    position: relative;
+    display: flex;
+  }
+  
+  .user-card {
+    border-radius: 10px;
+    width: 170px;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(#30BB64 , #108517);
+    display: flex;
+  }
+  
+  .general-information {
+    width: 60vw;
+    height: 100%;
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .user-photo {
+    font-size: 7em;
+  }
+  
+  .card-element {
+    margin-bottom: 15px;
+  }
+  
+  .card-font {
+    font-size: 1.5rem;
+  }
+
+  .submit {
+  padding-right: 18px;
+  padding-top: 15px;
+  padding-bottom: 6px;
+  text-align: right;
+  }
+
+  img {
+  width: 170px;
+  }
+
+  .part {
+   margin: 10px ;
+   height: 320px;
+   border: 3px solid black; 
+   }
+  
+</style>
+</head>
+<body style="width: 98%;">
+  <header class="heading">
+  <h1>ID Card generator</h1>
+  </header>
+  <div class="container">
+  <div class="main-box">
+  <form onsubmit="return false">
+  <div class="form-element">
+  <label class="form-label">
+  <strong> Enter Name:</strong>
+  </label>
+  <input type="text" id="name" maxlength="20" />
+  </div>
+  <div class="form-element">
+  <label class="form-label">
+  <strong>Registration no:</strong>
+  </label>
+  <input type="text" id="r_no" maxlength="10" />
+  </div>
+  <div class="form-element">
+  <label class="form-label">
+  <strong>Course:</strong>
+  </label>
+  <input type="text" id="c_name" maxlength="23" />
+  </div>
+  <div class="form-element">
+  <label class="form-label">
+  <strong>University:</strong>
+  </label>
+  <input type="text" id="u_name" maxlength="23" />
+  </div>
+	<div class="form-element">
+     	<label class="form-label" for="photo"><strong>Photo:</strong></label>
+      	<input type="file" id='photo' accept="image/*">
+    	</div>
+	<div class="submit">
+        <button style="font-size: 20px;" onclick="generateCard()">Generate Card</button>
+        </div>     
+   	</form>
+           </div>
+ <div class="part"> </div>
+        <div class="sub-box">
+        <div class="id-card-container" id="collegeCard">
+	<div class="card-container">
+	<div class="user-card">
+	<img id="uploaded-image">
+	</div>
+	<div class="general-information">
+	
+	<div class="card-element card-font">
+	<strong><div id="cardName"></div></strong>
+	</div>
+	<div class="card-element card-font">
+	<strong><div id="Reg No"></div></strong>
+	</div>
+	<div class="card-element card-font">
+	<strong><div id="Course"></div></strong>
+	</div>
+	<div class="card-element card-font">
+	<strong><div id="University"></div></strong>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+        </div>
+
+
+        <script >
+	function generateCard() {
+    
+    const NValue = document.getElementById("name").value;
+    const nValue = "Name: " + NValue;
+    document.getElementById("cardName").innerHTML = nValue;
+
+    
+    const RValue = document.getElementById("r_no").value;
+    const rValue = "Reg No: " + RValue;
+    document.getElementById("Reg No").innerHTML = rValue;
+
+    
+    const CValue = document.getElementById("c_name").value;
+    const cValue = "Course: " + CValue;
+    document.getElementById("Course").innerHTML = cValue;
+
+    const UValue = document.getElementById("u_name").value;
+    const uValue = "University: " + UValue;
+    document.getElementById("University").innerHTML = uValue;
+        
+    document.getElementById("collegeCard").style.display = "block";
+}
+</script>
+  <script>
+    const upImage = document.getElementById('photo');
+    const uploadedImage = document.getElementById('uploaded-image');
+
+    upImage.addEventListener('change', function() {
+      const file = this.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.addEventListener('load', function() {
+          uploadedImage.src = reader.result;
+        });
+
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
