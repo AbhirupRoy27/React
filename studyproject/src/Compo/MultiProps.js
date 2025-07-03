@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import Code from './Test_rafce'
 import './MultiProps.css'
 
 const MultiProps = ({name, age, hobby, userName: message, userAge: request, id}) => {
-    useEffect(() => {
-        console.log("hello");
-    }, []);
+    // useEffect(() => {
+    //     console.log("hello");
+    // }, []);
 
     const cardClass = id ? "testMulti yellow" : "testMulti";
 
@@ -14,7 +14,7 @@ const MultiProps = ({name, age, hobby, userName: message, userAge: request, id})
             <h2>Multi Compo Test By {name}</h2>
             <p>Test Passed with {age} {hobby}</p>
             <Code message={message + ",i am " + name} />
-            <p id={id}>Requests: {request}</p>
+            <p>Requests: {request}</p>
         </div>
     );
 }
