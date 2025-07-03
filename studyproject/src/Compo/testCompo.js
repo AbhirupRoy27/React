@@ -1,9 +1,9 @@
-function t() {
-    console.log("Rendured Component OneProps");
-}
+// function t() {
+//     console.log("Rendured Component OneProps");
+// }
 
 function testCompo(crops) {
-    t();
+    // t();
 
     return (
             <h1>Hello, I am {crops.name} and {crops.age}</h1>
