@@ -20,11 +20,16 @@ function TextInput() {
 
   return (
     <div style={textStyle}>
-      <p style={{ fontWeight: 900 }}>Input: {text}</p>
+      <div>
+        <p style={{ fontWeight: 900 }}>
+          Input: <b style={{ color: 'red' }}>{text}</b>
+        </p>
+      </div>
       <input
         placeholder="Serch...."
         onChange={(e) => setText(e.target.value)}
         style={{ padding: '6px' }}
+        maxLength={15}
       />
     </div>
   )
